@@ -12,5 +12,6 @@
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.
             DISPLAY "Hello world"
+            DISPLAY "READY"
             STOP RUN.
        END PROGRAM STUDENT-GRADE-SROTER.
