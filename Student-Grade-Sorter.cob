@@ -1,7 +1,7 @@
       ******************************************************************
-      * Author:
-      * Date:
-      * Purpose:
+      * Author: TerrorBite CAPACITI
+      * Date: 04 March 2025
+      * Purpose: Sort student grades into ascending order
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
