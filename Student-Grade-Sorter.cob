@@ -5,7 +5,7 @@
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. YOUR-PROGRAM-NAME.
+       PROGRAM-ID. STUDENT-GRADE-SROTER.
        DATA DIVISION.
        FILE SECTION.
        WORKING-STORAGE SECTION.
