@@ -13,5 +13,4 @@
        MAIN-PROCEDURE.
             DISPLAY "Hello world"
             STOP RUN.
-       END PROGRAM YOUR-PROGRAM-NAME.
-
+       END PROGRAM STUDENT-GRADE-SROTER.
