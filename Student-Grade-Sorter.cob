@@ -2,18 +2,36 @@
       * Author: TerrorBite CAPACITI
       * Date: 04 March 2025
       * Purpose: Sort student grades into ascending order
-      * Tectonics: cobc
+      * Compiler: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID. STUDENT-GRADE-SORTER.
 
-
        DATA DIVISION.
-       FILE SECTION.
        WORKING-STORAGE SECTION.
+       01 USER-CHOICE PIC 9 VALUE 0.
+
        PROCEDURE DIVISION.
-       MAIN-PROCEDURE.
-            DISPLAY "Hello world"
-            DISPLAY "READY"
-            STOP RUN.
-       END PROGRAM STUDENT-GRADE-SORTER.
+       MAIN-LOGIC.
+           PERFORM DISPLAY-MENU
+           PERFORM GET-CHOICE
+           PERFORM PROCESS-CHOICE
+           STOP RUN.
+
+       DISPLAY-MENU.
+           DISPLAY "1. Sort By Grade".
+           DISPLAY "2. Sort By Name".
+
+       GET-CHOICE.
+           DISPLAY "Enter choice: " WITH NO ADVANCING.
+           ACCEPT USER-CHOICE.
+
+           IF USER-CHOICE NOT = 1 AND USER-CHOICE NOT = 2 THEN
+               DISPLAY "Invalid choice. Please enter 1 or 2."
+               PERFORM GET-CHOICE.
+
+       PROCESS-CHOICE.
+           IF USER-CHOICE = 1 THEN
+               DISPLAY "Sorting by Grade..."
+           ELSE
+               DISPLAY "Sorting by Name...".
