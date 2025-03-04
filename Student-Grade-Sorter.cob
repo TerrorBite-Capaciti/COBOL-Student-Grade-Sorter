@@ -5,7 +5,9 @@
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. STUDENT-GRADE-SROTER.
+       PROGRAM-ID. STUDENT-GRADE-SORTER.
+
+
        DATA DIVISION.
        FILE SECTION.
        WORKING-STORAGE SECTION.
@@ -14,4 +16,4 @@
             DISPLAY "Hello world"
             DISPLAY "READY"
             STOP RUN.
-       END PROGRAM STUDENT-GRADE-SROTER.
+       END PROGRAM STUDENT-GRADE-SORTER.
