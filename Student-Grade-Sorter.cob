@@ -8,10 +8,12 @@
        PROGRAM-ID. STUDENT-GRADE-SORTER.
 
        ENVIRONMENT DIVISION.
-       INPUT-OUTPUT SECTION. 
+       INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            SELECT PERSON-FILE ASSIGN TO 'students.csv'.
 
+      *****Below file is for processing a file with columns etc.
+           SELECT STUDENTS-FILE ASSIGN TO 'students_records.txt'.
        DATA DIVISION.
        WORKING-STORAGE SECTION.
        01 USER-CHOICE PIC 9 VALUE 0.
