@@ -14,7 +14,18 @@
 
       *****Below file is for processing a file with columns etc.
            SELECT STUDENTS-FILE ASSIGN TO 'students_records.txt'.
+
        DATA DIVISION.
+       FILE SECTION.
+       SD STUDENTS-FILE.
+       01 STUDENT-RECORD.
+           05 STUDENT-ID PIC 9(5).
+           05 FIRST-NAME PIC A(10).
+           05 LAST-NAME PIC A(10).
+           05 GRADE PIC 9(3).
+           05 AGE PIC 9(2).
+           05 COURSE PIC A(15).
+
        WORKING-STORAGE SECTION.
        01 USER-CHOICE PIC 9 VALUE 0.
 
