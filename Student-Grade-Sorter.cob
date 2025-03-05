@@ -17,7 +17,7 @@
 
        DATA DIVISION.
        FILE SECTION.
-       SD STUDENTS-FILE.
+       FD STUDENTS-FILE.
        01 STUDENT-RECORD.
            05 STUDENT-ID PIC 9(5).
            05 FIRST-NAME PIC A(10).
