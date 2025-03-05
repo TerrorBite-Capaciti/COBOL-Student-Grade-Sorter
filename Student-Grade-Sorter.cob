@@ -15,6 +15,8 @@
       *****Below file is for processing a file with columns etc.
            SELECT STUDENTS-FILE ASSIGN TO 'students_records.txt'.
 
+           SELECT SORTED-FILE ASSIGN TO 'sorted_student_records.txt'.
+
        DATA DIVISION.
        FILE SECTION.
        FD STUDENTS-FILE.
