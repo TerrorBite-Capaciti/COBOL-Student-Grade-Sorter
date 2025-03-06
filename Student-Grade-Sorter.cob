@@ -10,33 +10,42 @@
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
-           SELECT PERSON-FILE ASSIGN TO 'students.csv'.
+           SELECT STUDENTS-FILE ASSIGN TO 'students_records.txt'.
+           SELECT SORTED-FILE ASSIGN TO "sorted_student_records.txt".
+           SELECT SORT-WORK ASSIGN TO "SORT-WORK".
 
       *****Below file is for processing a file with columns etc.
-           SELECT STUDENTS-FILE ASSIGN TO 'students_records.txt'.
-
-           SELECT SORTED-FILE ASSIGN TO 'sorted_student_records.txt'.
 
        DATA DIVISION.
        FILE SECTION.
        FD STUDENTS-FILE.
        01 STUDENT-RECORD.
-           05 STUDENT-ID PIC 9(5).
+           05 STUDENT-ID PIC X(5).
            05 FIRST-NAME PIC A(10).
            05 LAST-NAME PIC A(10).
-           05 GRADE PIC 9(3).
+           05 GRADE PIC X(3).
            05 AGE PIC 9(2).
            05 COURSE PIC A(15).
 
-       SD SORTED-FILE.
+       FD SORTED-FILE.
        01 SORTED-STUDENT-RECORD.
-           05 STUDENT-ID PIC 9(5).
-           05 FIRST-NAME PIC A(10).
-           05 LAST-NAME PIC A(10).
-           05 GRADE PIC 9(3).
+           05 SORTED-STUDENT-ID PIC X(5).
+           05 SORTED-FIRST-NAME PIC A(10).
+           05 SORTED-LAST-NAME PIC A(10).
+           05 SORTED-GRADE PIC X(3).
+
+       SD SORT-WORK
+       DATA RECORD IS SORT-STUDENT-RECORD.
+       01 SORT-STUDENT-RECORD.
+           05 SW-STUDENT-ID PIC X(5).
+           05 SW-FIRST-NAME PIC A(10).
+           05 SW-LAST-NAME PIC A(10).
+           05 SW-GRADE PIC X(3).
+
 
        WORKING-STORAGE SECTION.
        01 USER-CHOICE PIC 9 VALUE 0.
+       01 WS-EOF PIC X VALUE "N".
 
        PROCEDURE DIVISION.
        MAIN-LOGIC.
@@ -48,7 +57,6 @@
        DISPLAY-MENU.
            DISPLAY "1. Sort By Grade".
            DISPLAY "2. Sort By Name".
-           DISPLAY "3. Sort By Course".
 
        GET-CHOICE.
            DISPLAY "Enter choice: " WITH NO ADVANCING.
@@ -61,5 +69,47 @@
        PROCESS-CHOICE.
            IF USER-CHOICE = 1 THEN
                DISPLAY "Sorting by Grade..."
+               PERFORM SORT-BY-GRADE
            ELSE
-               DISPLAY "Sorting by Name...".
+               DISPLAY "Sorting by Name..."
+               PERFORM SORT-BY-NAME
+           END-IF.
+
+       SORT-BY-GRADE.
+                SORT SORT-WORK ON ASCENDING KEY SW-GRADE
+                   INPUT PROCEDURE READ-STUDENTS
+                   OUTPUT PROCEDURE WRITE-STUDENTS.
+
+
+       SORT-BY-NAME.
+                 SORT SORT-WORK ON ASCENDING KEY SW-LAST-NAME
+                   INPUT PROCEDURE READ-STUDENTS
+                   OUTPUT PROCEDURE WRITE-STUDENTS.
+
+       READ-STUDENTS.
+              OPEN INPUT STUDENTS-FILE.
+              MOVE "N" TO WS-EOF.
+              PERFORM UNTIL WS-EOF = "Y"
+               READ STUDENTS-FILE INTO STUDENT-RECORD
+                   AT END MOVE "Y" TO WS-EOF
+                   NOT AT END
+                       MOVE STUDENT-ID TO SW-STUDENT-ID
+                       MOVE FIRST-NAME TO SW-FIRST-NAME
+                       MOVE LAST-NAME TO SW-LAST-NAME
+                       MOVE GRADE TO SW-GRADE
+      *>                  WRITE SORT-STUDENT-RECORD
+
+           END-PERFORM.
+           CLOSE STUDENTS-FILE.
+
+       WRITE-STUDENTS.
+                OPEN OUTPUT SORTED-FILE.
+                MOVE "N" TO WS-EOF.
+                PERFORM UNTIL WS-EOF ="Y"
+                RETURN SORT-WORK INTO SORT-STUDENT-RECORD
+                 AT END MOVE "Y" TO WS-EOF
+                  NOT AT END
+                   WRITE SORTED-STUDENT-RECORD
+           END-PERFORM.
+           CLOSE SORTED-FILE.
+           DISPLAY "Sorting completed successfully.".
