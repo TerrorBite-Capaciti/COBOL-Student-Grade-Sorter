@@ -48,6 +48,7 @@
        DISPLAY-MENU.
            DISPLAY "1. Sort By Grade".
            DISPLAY "2. Sort By Name".
+           DISPLAY "3. Sort By Course".
 
        GET-CHOICE.
            DISPLAY "Enter choice: " WITH NO ADVANCING.
