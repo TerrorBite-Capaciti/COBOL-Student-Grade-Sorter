@@ -77,4 +77,4 @@
            IF USER-CHOICE = 1 THEN
                DISPLAY "Sorting by Grade..."
            ELSE
-               DISPLAY "Sorting by Name...".
+               DISPLAY "Sorting by Name....".
