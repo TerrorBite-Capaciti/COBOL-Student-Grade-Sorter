@@ -1,33 +1,37 @@
-      ******************************************************************
-      * Author: TerrorBite CAPACITI
-      * Date: 04 March 2025
-      * Purpose: Sort student grades into ascending order
-      * Compiler: cobc
-      ******************************************************************
-       IDENTIFICATION DIVISION.
+IDENTIFICATION DIVISION.
        PROGRAM-ID. STUDENT-GRADE-SORTER.
 
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
-           SELECT PERSON-FILE ASSIGN TO 'students.csv'.
-
-      *****Below file is for processing a file with columns etc.
-           SELECT STUDENTS-FILE ASSIGN TO 'students_records.txt'.
+           SELECT STUDENT-FILE ASSIGN TO "students_records.txt"
+               ORGANIZATION IS LINE SEQUENTIAL.
+           SELECT SORTED-FILE ASSIGN TO "sorted_students.txt"
+               ORGANIZATION IS LINE SEQUENTIAL.
+           SELECT SORT-WORK-FILE ASSIGN TO "SORTWORK".
 
        DATA DIVISION.
        FILE SECTION.
-       SD STUDENTS-FILE.
+       FD STUDENT-FILE.
        01 STUDENT-RECORD.
-           05 STUDENT-ID PIC 9(5).
-           05 FIRST-NAME PIC A(10).
-           05 LAST-NAME PIC A(10).
-           05 GRADE PIC 9(3).
-           05 AGE PIC 9(2).
-           05 COURSE PIC A(15).
+           05 FIRST-NAME         PIC X(15).
+           05 FILLER             PIC X(1).  *> Space between columns
+           05 LAST-NAME          PIC X(15).
+           05 FILLER             PIC X(1).  *> Space between columns
+           05 GRADE              PIC 99.
+
+       FD SORTED-FILE.
+       01 SORTED-RECORD          PIC X(32).
+
+       SD SORT-WORK-FILE.
+       01 SORT-WORK-RECORD.
+           05 SORT-KEY           PIC 99.  *> Numeric key for sorting by GRADE
+           05 STUDENT-DATA       PIC X(30).
 
        WORKING-STORAGE SECTION.
-       01 USER-CHOICE PIC 9 VALUE 0.
+       01 USER-CHOICE            PIC 9 VALUE 0.
+       01 USER-SUB-CHOICE        PIC 9 VALUE 0.
+       01 EOF-FLAG               PIC X VALUE 'N'.
 
        PROCEDURE DIVISION.
        MAIN-LOGIC.
@@ -37,11 +41,15 @@
            STOP RUN.
 
        DISPLAY-MENU.
-           DISPLAY "1. Sort By Grade".
-           DISPLAY "2. Sort By Name".
+           DISPLAY "----------------------------------------".
+           DISPLAY "       STUDENT GRADE SORTER MENU         ".
+           DISPLAY "----------------------------------------".
+           DISPLAY "1. Choose Sorting Option".
+           DISPLAY "2. Generate Summary Reports".
+           DISPLAY "----------------------------------------".
+           DISPLAY "Enter your choice (1 or 2): " WITH NO ADVANCING.
 
        GET-CHOICE.
-           DISPLAY "Enter choice: " WITH NO ADVANCING.
            ACCEPT USER-CHOICE.
 
            IF USER-CHOICE NOT = 1 AND USER-CHOICE NOT = 2 THEN
@@ -50,6 +58,55 @@
 
        PROCESS-CHOICE.
            IF USER-CHOICE = 1 THEN
-               DISPLAY "Sorting by Grade..."
+               DISPLAY "----------------------------------------"
+               DISPLAY "       CHOOSE SORTING OPTION            "
+               DISPLAY "----------------------------------------"
+               PERFORM GET-SORTING-OPTION
            ELSE
-               DISPLAY "Sorting by Name...".
+               DISPLAY "----------------------------------------"
+               DISPLAY "       CHOOSE REPORT TYPE               "
+               DISPLAY "----------------------------------------"
+               PERFORM GET-REPORT-TYPE.
+
+       GET-SORTING-OPTION.
+           DISPLAY "1. Sort by Name"
+           DISPLAY "2. Sort by Grade"
+           DISPLAY "3. Sort by Course"
+           DISPLAY "4. Sort by Student Number"
+           DISPLAY "----------------------------------------"
+           DISPLAY "Enter your choice (1-4): " WITH NO ADVANCING
+           ACCEPT USER-SUB-CHOICE.
+
+           PERFORM SORT-STUDENT-DATA
+           DISPLAY "Sorting completed. Results saved to sorted_students.txt".
+
+       GET-REPORT-TYPE.
+           DISPLAY "1. Generate Detailed Report"
+           DISPLAY "2. Generate Summary Report"
+           DISPLAY "----------------------------------------"
+           DISPLAY "Enter your choice (1 or 2): " WITH NO ADVANCING
+           ACCEPT USER-SUB-CHOICE.
+
+           IF USER-SUB-CHOICE = 1 THEN
+               DISPLAY "Generating Detailed Report..."
+           ELSE IF USER-SUB-CHOICE = 2 THEN
+               DISPLAY "Generating Summary Report..."
+           ELSE
+               DISPLAY "Invalid choice. Please enter 1 or 2."
+               PERFORM GET-REPORT-TYPE.
+
+       SORT-STUDENT-DATA.
+           EVALUATE USER-SUB-CHOICE
+               WHEN 1
+                   SORT SORT-WORK-FILE
+                       ON ASCENDING KEY SORT-KEY
+                       USING STUDENT-FILE
+                       GIVING SORTED-FILE
+                   MOVE FIRST-NAME OF STUDENT-RECORD TO SORT-KEY
+               WHEN 2
+                   SORT SORT-WORK-FILE
+                       ON ASCENDING KEY SORT-KEY
+                       USING STUDENT-FILE
+                       GIVING SORTED-FILE
+                   MOVE GRADE OF STUDENT-RECORD TO SORT-KEY
+           END-EVALUATE.

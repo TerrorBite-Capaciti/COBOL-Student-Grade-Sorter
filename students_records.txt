@@ -1,55 +1,9 @@
-********************************* Top of Data **********************************
-Student ID         First Name      Last Name        Grade Age      Course        
-S0001              John            Doe              85    20       COMPUTER SCI   
-S0002              Jane            Smith            92    22       ELECTRICAL EN  
-S0003              Mike            Johnson          74    19       BUSINESS ADM   
-S0004              Emily           Brown            88    21       MECHANICAL EN  
-S0005              Chris           Williams         79    23       PSYCHOLOGY     
-S0006              Anna            White            95    21       MATHEMATICS    
-S0007              Luke            Black            78    22       COMPUTER SCI   
-S0008              Sarah           Green            89    20       BIOLOGY        
-S0009              Ben             Taylor           65    19       HISTORY        
-S0010              Rachel          Harris           77    24       ENGINEERING    
-S0011              Olivia          King             82    21       PHYSICS        
-S0012              Liam            Scott            90    22       CHEMISTRY      
-S0013              Emma            Clark            76    23       ECONOMICS      
-S0014              Mason           Lewis            85    20       LITERATURE     
-S0015              Ava             Walker           94    19       ARCHITECTURE    
-S0016              Caleb           Carter           88    21       COMPUTER SCI   
-S0017              Mia             Mitchell         83    20       MUSIC          
-S0018              Noah            Perez            79    22       LAW            
-S0019              Lily            Roberts          91    19       MEDICINE       
-S0020              Jacob           Evans            67    23       BUSINESS ADM   
-S0021              Sophia          Murphy           80    20       PHYSICS        
-S0022              Samuel          Adams            89    21       ART            
-S0023              Isabella        Morgan           72    22       HISTORY        
-S0024              Daniel          Thompson         87    20       ECONOMICS      
-S0025              Natalie         Cooper           95    21       ENGINEERING    
-S0026              Jack            Nelson           74    22       COMPUTER SCI   
-S0027              Ella            Carter           81    23       LAW            
-S0028              Lucas           Gomez            66    19       PSYCHOLOGY     
-S0029              Grace           Mitchell         88    21       LITERATURE     
-S0030              Ryan            Perez            93    22       MEDICINE       
-S0031              Alice           Hall             75    23       MUSIC          
-S0032              Isaac           Turner           91    20       COMPUTER SCI   
-S0033              Lily            Williams         82    21       ART            
-S0034              David           Harris           78    22       BIOLOGY        
-S0035              Chloe           Wilson           80    20       CHEMISTRY      
-S0036              Jack            Lee              92    19       ECONOMICS      
-S0037              Emma            Clark            84    21       MATHEMATICS    
-S0038              Ethan           Martinez         79    22       HISTORY        
-S0039              Charlotte       Walker           89    23       PHYSICS        
-S0040              George          King             91    20       ENGINEERING    
-S0041              Sophia          Turner           83    19       LAW            
-S0042              Aiden           Adams            80    22       MUSIC          
-S0043              Lily            Scott            92    21       COMPUTER SCI   
-S0044              Ben             Johnson          75    20       PSYCHOLOGY     
-S0045              Emily           Robinson         68    23       BUSINESS ADM   
-S0046              Max             Miller           85    20       LITERATURE     
-S0047              Mia             White            88    21       MEDICINE       
-S0048              Jacob           Cooper           76    20       PSYCHOLOGY     
-S0049              Olivia          Jackson          84    19       COMPUTER SCI   
-S0050              James           Carter           77    22       ARCHITECTURE    
-******************************** Bottom of Data ********************************
-
-
+Liam           Smith          92
+Sophia         Brown          78
+Noah           Williams       88
+Olivia         Martinez       95
+Ethan          Taylor         81
+Ava            Anderson       90
+Mason          Thomas         76
+Isabella       White          89
+James          Harris         84

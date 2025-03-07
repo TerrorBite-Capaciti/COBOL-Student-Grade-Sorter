@@ -1,0 +1,9 @@
+Ava            Anderson       90
+Ethan          Taylor         81
+James          Harris         84
+Isabella       White          89
+Liam           Smith          92
+Mason          Thomas         76
+Noah           Williams       88
+Olivia         Martinez       95
+Sophia         Brown          78
