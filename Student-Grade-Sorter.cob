@@ -14,8 +14,8 @@
 
       *****Below file is for processing a file with columns etc.
            SELECT STUDENTS-FILE ASSIGN TO 'students_records.txt'.
-
            SELECT SORTED-FILE ASSIGN TO 'sorted_student_records.txt'.
+           SELECT WORK-FILE ASSIGN TO 'work.tmp'.  *> Add work file for sorting
 
        DATA DIVISION.
        FILE SECTION.
@@ -28,7 +28,14 @@
            05 AGE PIC 9(2).
            05 COURSE PIC A(15).
 
-       SD SORTED-FILE.
+       SD WORK-FILE.  *> Define work file for sorting
+       01 WORK-RECORD.
+           05 WORK-STUDENT-ID PIC 9(5).
+           05 WORK-FIRST-NAME PIC A(10).
+           05 WORK-LAST-NAME PIC A(10).
+           05 WORK-GRADE PIC 9(3).
+
+       FD SORTED-FILE.
        01 SORTED-STUDENT-RECORD.
            05 STUDENT-ID PIC 9(5).
            05 FIRST-NAME PIC A(10).
@@ -60,5 +67,16 @@
        PROCESS-CHOICE.
            IF USER-CHOICE = 1 THEN
                DISPLAY "Sorting by Grade..."
+               *> Add logic for sorting by grade here (your team's responsibility)
            ELSE
-               DISPLAY "Sorting by Name...".
+               DISPLAY "Sorting by Name..."
+               PERFORM SORT-BY-NAME.  *> Call your sorting logic
+
+       SORT-BY-NAME.
+           SORT WORK-FILE
+               ON ASCENDING KEY WORK-LAST-NAME  *> Sort by last name
+               USING STUDENTS-FILE
+               GIVING SORTED-FILE.
+
+           DISPLAY "Student records sorted by name and saved to ",
+           "sorted_student_records.txt".

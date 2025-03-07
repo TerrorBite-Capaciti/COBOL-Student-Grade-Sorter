@@ -1,0 +1,35 @@
+NGINEERING    
+S0026       NGINEERING    
+S0041        ELECTRICAL EN  
+S0003       MUSIC          
+S0018      COMPUTER SCI   
+S0033      MEDICINE       
+S0048        HISTORY        
+S0010       ECONOMICS      
+S0025      PHYSICS        
+S0040 3       MUSIC          
+S00        Johnson          74 EN  
+S0005              Chr       
+S0012                        Ava             Wa         Perez            79     
+S0020              JaR SCI   
+S0027                        Ryan            P     
+S0035              Ch        
+S0042                      Cooper           76CI   
+S0050              Ja        Ethan           Mart      Nelson           74         Turner           83          Sarah           Green  
+S0043              Lily   
+S0028              Lucas     King             82     
+S0013              Emma         95    21       MATHEM     Caleb           Carter      Alice           Hall        Max             Miller    Harris           78    22   Jackson          84    19   Roberts          91    19    John            Doe     
+S0036              Jack         88    21       LITERATU     75    20       PSYCHOLO
+S0021              Sophia  iams         79    23         Brown            88    21 S0006              Anna         85    20       LITERATUR  Daniel          Thompson    Charlotte       Walker               66    19       PS           92    21       COAdams            80    22   Carter           81    23     89    21       ART        044              Ben        029              Grace        84    21       MATHEMATICS Ben             Taylor               76    23       ECOcott            90    22     78    22       COMPUTER SCI14              Mason              COMPUTER SCI   
+S000**************************** ***************************
+**************************Data ***********************        80    20       PHYSIson           80    20                 
+S0019                     
+S0034          ESS ADM   
+S0004           HOLOGY     
+S0049          ter           77    22      ns            67    23              92    19       ECONO    19       ARCHITECTURE   3    22       MEDICINE       20       BIOLOGY        
+Sia             Mitchell       22       HISTORY        
+  22       HISTORY        
+1       COMPUTER SCI   
+S00GINEERING    
+S0011        saac           Turner       0       LITERATURE     
+S008    23       BUSINESS ADM  ia             White                Isabella        Morg              Samuel        ge          King            l          Harris                        Luke           ne            Smith                       Emma                   Williams         82rade Age      Course        lie         Cooper          ID         First Name      L           Emily           R
