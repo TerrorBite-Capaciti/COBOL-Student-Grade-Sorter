@@ -10,40 +10,49 @@
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
-           SELECT PERSON-FILE ASSIGN TO 'students.csv'.
+           SELECT STUDENTS-FILE ASSIGN TO 'students_records.txt'.
+           SELECT SORTED-FILE ASSIGN TO "sorted_student_records.txt".
+           SELECT SORT-WORK ASSIGN TO "SORT-WORK".
 
       *****Below file is for processing a file with columns etc.
            SELECT STUDENTS-FILE ASSIGN TO 'students_records.txt'.
+
            SELECT SORTED-FILE ASSIGN TO 'sorted_student_records.txt'.
-           SELECT WORK-FILE ASSIGN TO 'work.tmp'.  *> Add work file for sorting
 
        DATA DIVISION.
        FILE SECTION.
        FD STUDENTS-FILE.
        01 STUDENT-RECORD.
-           05 STUDENT-ID PIC 9(5).
+           05 STUDENT-ID PIC X(5).
            05 FIRST-NAME PIC A(10).
            05 LAST-NAME PIC A(10).
-           05 GRADE PIC 9(3).
-           05 AGE PIC 9(2).
+           05 GRADE PIC X(3).
+           05 AGE PIC X(2).
            05 COURSE PIC A(15).
 
-       SD WORK-FILE.  *> Define work file for sorting
-       01 WORK-RECORD.
-           05 WORK-STUDENT-ID PIC 9(5).
-           05 WORK-FIRST-NAME PIC A(10).
-           05 WORK-LAST-NAME PIC A(10).
-           05 WORK-GRADE PIC 9(3).
-
-       FD SORTED-FILE.
+       SD SORTED-FILE.
        01 SORTED-STUDENT-RECORD.
-           05 STUDENT-ID PIC 9(5).
-           05 FIRST-NAME PIC A(10).
-           05 LAST-NAME PIC A(10).
-           05 GRADE PIC 9(3).
+           05 SORTED-STUDENT-ID PIC X(5).
+           05 SORTED-FIRST-NAME PIC A(10).
+           05 SORTED-LAST-NAME PIC A(10).
+           05 SORTED-GRADE PIC X(3).
+           05 SORTED-AGE PIC X(2).
+           05 SORTED-COURSE PIC A(15).
+
+       SD SORT-WORK
+       DATA RECORD IS SORT-STUDENT-RECORD.
+       01 SORT-STUDENT-RECORD.
+           05 SW-STUDENT-ID PIC X(5).
+           05 SW-FIRST-NAME PIC A(10).
+           05 SW-LAST-NAME PIC A(10).
+           05 SW-GRADE PIC X(3).
+           05 SW-AGE PIC X(2).
+           05 SW-COURSE PIC A(15).
+
 
        WORKING-STORAGE SECTION.
        01 USER-CHOICE PIC 9 VALUE 0.
+       01 WS-EOF PIC X VALUE "N".
 
        PROCEDURE DIVISION.
        MAIN-LOGIC.
@@ -67,16 +76,5 @@
        PROCESS-CHOICE.
            IF USER-CHOICE = 1 THEN
                DISPLAY "Sorting by Grade..."
-               *> Add logic for sorting by grade here (your team's responsibility)
            ELSE
-               DISPLAY "Sorting by Name..."
-               PERFORM SORT-BY-NAME.  *> Call your sorting logic
-
-       SORT-BY-NAME.
-           SORT WORK-FILE
-               ON ASCENDING KEY WORK-LAST-NAME  *> Sort by last name
-               USING STUDENTS-FILE
-               GIVING SORTED-FILE.
-
-           DISPLAY "Student records sorted by name and saved to ",
-           "sorted_student_records.txt".
+               DISPLAY "Sorting by Name...".
