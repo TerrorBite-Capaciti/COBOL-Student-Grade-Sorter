@@ -24,7 +24,7 @@
            05 FIRST-NAME PIC A(10).
            05 LAST-NAME PIC A(10).
            05 GRADE PIC X(3).
-           05 AGE PIC 9(2).
+           05 AGE PIC X(2).
            05 COURSE PIC A(15).
 
        FD SORTED-FILE.
@@ -33,6 +33,8 @@
            05 SORTED-FIRST-NAME PIC A(10).
            05 SORTED-LAST-NAME PIC A(10).
            05 SORTED-GRADE PIC X(3).
+           05 SORTED-AGE PIC X(2).
+           05 SORTED-COURSE PIC A(15).
 
        SD SORT-WORK
        DATA RECORD IS SORT-STUDENT-RECORD.
@@ -41,6 +43,8 @@
            05 SW-FIRST-NAME PIC A(10).
            05 SW-LAST-NAME PIC A(10).
            05 SW-GRADE PIC X(3).
+           05 SW-AGE PIC X(2).
+           05 SW-COURSE PIC A(15).
 
 
        WORKING-STORAGE SECTION.
@@ -90,13 +94,17 @@
               OPEN INPUT STUDENTS-FILE.
               MOVE "N" TO WS-EOF.
               PERFORM UNTIL WS-EOF = "Y"
-               READ STUDENTS-FILE INTO STUDENT-RECORD
+               READ STUDENTS-FILE
                    AT END MOVE "Y" TO WS-EOF
                    NOT AT END
                        MOVE STUDENT-ID TO SW-STUDENT-ID
                        MOVE FIRST-NAME TO SW-FIRST-NAME
                        MOVE LAST-NAME TO SW-LAST-NAME
                        MOVE GRADE TO SW-GRADE
+                       MOVE AGE TO SW-AGE
+                       MOVE COURSE TO SW-COURSE
+                       RELEASE SORT-STUDENT-RECORD
+      * **** THIS SENDS DATA TO SORT
       *>                  WRITE SORT-STUDENT-RECORD
 
            END-PERFORM.
@@ -109,7 +117,13 @@
                 RETURN SORT-WORK INTO SORT-STUDENT-RECORD
                  AT END MOVE "Y" TO WS-EOF
                   NOT AT END
-                   WRITE SORTED-STUDENT-RECORD
+                  MOVE SW-STUDENT-ID TO SORTED-STUDENT-ID
+                  MOVE SW-FIRST-NAME TO SORTED-FIRST-NAME
+                  MOVE SW-LAST-NAME TO SORTED-LAST-NAME
+                  MOVE SW-GRADE TO SORTED-GRADE
+                  MOVE SW-AGE TO SORTED-AGE
+                  MOVE SW-COURSE TO SORTED-COURSE
+                   WRITE SORTED-STUDENT-RECORD FROM SORT-STUDENT-RECORD
            END-PERFORM.
            CLOSE SORTED-FILE.
            DISPLAY "Sorting completed successfully.".

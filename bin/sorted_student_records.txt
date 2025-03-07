@@ -1,0 +1,56 @@
+ 20       BIOLOGY        
+S0009               22       HISTORY        
+S0024              22       HISTORY        
+S0039            rade Age      Course        
+S0001              John            Doe              85    20ne            Smith            92    22       ELECTRICAL EN  
+S0003              Mike    ESS ADM   
+S0004              Emily         iams         79    23       PSYCHOLOGY     
+S0006              Anna            White                  Luke            Black            Ben             Taylor           65    19   l          Harris           77    24       ENGINEERING    
+S0011              Olivia          King             82    21       PHYSICS        
+S0012              Liam            Scott            90    22       CHEMISTRY     14              Mason           Lewis            19       ARCHITECTURE    
+S0016         ia             Mitchell         83    20       MUSIC          
+S0018              Noah              
+S0019              Lily         ns            67    23       BUSINESS ADM                 Samuel          Adams            89    21       ART            
+S0023      lie         Cooper           95    21       ENGINEERING    
+S0026              Jack            Nelson           74    22       COMPUTER SCI   
+S0027              Ella            Carter           81    23       LAW          029              Grace           Mitchell    3    22       MEDICINE       
+S0031              Alice           Hall             75    2saac           Turner           91    20       COMPUTER SCI   
+S0033              Lily              
+S0034              David        son           80    20       CHEMISTRY      
+S0036              Jack            Lee                    Emma            Clark            Charlotte       Walker           89    23  ge          King             91    20       ENGINEERING    
+S0041              Sophia          Turner           83    19       LAW            
+S0042              Aiden           Adams            80    22       MUSIC        044              Ben             Johnson     ia             White            88    21       MEDICINE       
+S0048              Jacob  HOLOGY     
+S0049              Olivia       ter           77    22       ARCHITECTURE    ID         First Name      Last Name        G           Ryan            Perez            9           Emily           Robinson         6   Roberts          91    19       MEDICINE     Jackson          84    19       COMPUTER S   Harris           78    22       BIOLOGY            Cooper           76    20       PSYC         Perez            79    22       LAW          Williams         82    21       ART            92    21       COMPUTER SCI   
+S0     
+S0035              Chloe           Wil     
+S0020              Jacob           EvaCI   
+S0050              James           Car           66    19       PSYCHOLOGY     
+S0          Ava             Walker           94********************************* Top of Data **********************************
+Student 
+******************************** Bottom of Data ********************************
+
+
+f     HISTORY        
+S0010              Rache       COMPUTER SCI   
+S0002              Ja  Brown            88    21       MECHANICAL      ECONOMICS      
+S0025              Nata     PHYSICS        
+S0040              Geor        Johnson          74    19       BUSIN     88    21       LITERATURE     
+S0030   EN  
+S0005              Chris           Will          76    23       ECONOMICS      
+S00       95    21       MATHEMATICS    
+S0007   84    21       MATHEMATICS    
+S0038      8    23       BUSINESS ADM   
+S0046              75    20       PSYCHOLOGY     
+S0045           92    19       ECONOMICS      
+S00371       COMPUTER SCI   
+S0017              M3       MUSIC          
+S0032              I0       LITERATURE     
+S0047              M 78    22       COMPUTER SCI   
+S0008           85    20       LITERATURE     
+S0015            80    20       PHYSICS        
+S0022 
+S0013              Emma            Clark  
+S0021              Sophia          Murphy           Ethan           Martinez         79    
+S0028              Lucas           Gomez        Sarah           Green            89        Caleb           Carter           88    2     Max             Miller           85    2  
+S0043              Lily            Scott   Daniel          Thompson         87    20          Isabella        Morgan           72  
