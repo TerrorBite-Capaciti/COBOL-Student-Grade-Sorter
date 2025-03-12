@@ -18,7 +18,7 @@ IDENTIFICATION DIVISION.
            05 FILLER             PIC X(1).  *> Space between columns
            05 LAST-NAME          PIC X(15).
            05 FILLER             PIC X(1).  *> Space between columns
-           05 GRADE              PIC 99.
+           05 GRADE              PIC 99.   *> Ensure GRADE is numeric
 
        FD SORTED-FILE.
        01 SORTED-RECORD          PIC X(32).
@@ -71,9 +71,10 @@ IDENTIFICATION DIVISION.
        GET-SORTING-OPTION.
            DISPLAY "1. Sort by Name"
            DISPLAY "2. Sort by Grade"
-           DISPLAY "3. Sort by Student Number"
+           DISPLAY "3. Sort by Course"
+           DISPLAY "4. Sort by Student Number"
            DISPLAY "----------------------------------------"
-           DISPLAY "Enter your choice (1-3): " WITH NO ADVANCING
+           DISPLAY "Enter your choice (1-4): " WITH NO ADVANCING
            ACCEPT USER-SUB-CHOICE.
 
            PERFORM SORT-STUDENT-DATA
