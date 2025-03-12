@@ -1,10 +1,10 @@
-IDENTIFICATION DIVISION.
+       IDENTIFICATION DIVISION.
        PROGRAM-ID. STUDENT-GRADE-SORTER.
 
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
-           SELECT STUDENT-FILE ASSIGN TO "students_records.txt"
+           SELECT STUDENT-FILE ASSIGN TO "students_records2.txt"
                ORGANIZATION IS LINE SEQUENTIAL.
            SELECT SORTED-FILE ASSIGN TO "sorted_students.txt"
                ORGANIZATION IS LINE SEQUENTIAL.
@@ -32,6 +32,12 @@ IDENTIFICATION DIVISION.
        01 USER-CHOICE            PIC 9 VALUE 0.
        01 USER-SUB-CHOICE        PIC 9 VALUE 0.
        01 EOF-FLAG               PIC X VALUE 'N'.
+       01 TOTAL-STUDENTS         PIC 999 VALUE 0.
+       01 AVERAGE-GRADE          PIC 999V99 VALUE 0.
+       01 TOTAL-GRADE            PIC 9999 VALUE 0.
+       01 HIGHEST-GRADE          PIC 99 VALUE 0.
+       01 LOWEST-GRADE           PIC 99 VALUE 100.
+       01 REPORT-LINE            PIC X(80).
 
        PROCEDURE DIVISION.
        MAIN-LOGIC.
@@ -88,9 +94,9 @@ IDENTIFICATION DIVISION.
            ACCEPT USER-SUB-CHOICE.
 
            IF USER-SUB-CHOICE = 1 THEN
-               DISPLAY "Generating Detailed Report..."
+               PERFORM GENERATE-DETAILED-REPORT
            ELSE IF USER-SUB-CHOICE = 2 THEN
-               DISPLAY "Generating Summary Report..."
+               PERFORM GENERATE-SUMMARY-REPORT
            ELSE
                DISPLAY "Invalid choice. Please enter 1 or 2."
                PERFORM GET-REPORT-TYPE.
@@ -119,3 +125,63 @@ IDENTIFICATION DIVISION.
                        USING STUDENT-FILE
                        GIVING SORTED-FILE
            END-EVALUATE.
+
+       GENERATE-DETAILED-REPORT.
+           OPEN INPUT STUDENT-FILE.
+           MOVE "N" TO EOF-FLAG.
+           DISPLAY "----------------------------------------".
+           DISPLAY "       DETAILED STUDENT REPORT           ".
+           DISPLAY "----------------------------------------".
+           DISPLAY "FIRST NAME      LAST NAME       GRADE".
+           DISPLAY "----------------------------------------".
+           PERFORM UNTIL EOF-FLAG = "Y"
+               READ STUDENT-FILE
+                   AT END MOVE "Y" TO EOF-FLAG
+                   NOT AT END
+                       DISPLAY FIRST-NAME "  " LAST-NAME "  " GRADE
+                       ADD 1 TO TOTAL-STUDENTS
+                       ADD GRADE TO TOTAL-GRADE
+                       IF GRADE > HIGHEST-GRADE
+                           MOVE GRADE TO HIGHEST-GRADE
+                       END-IF
+                       IF GRADE < LOWEST-GRADE
+                           MOVE GRADE TO LOWEST-GRADE
+                       END-IF
+           END-PERFORM.
+           CLOSE STUDENT-FILE.
+
+           COMPUTE AVERAGE-GRADE = TOTAL-GRADE / TOTAL-STUDENTS.
+           DISPLAY "----------------------------------------".
+           DISPLAY "TOTAL STUDENTS: " TOTAL-STUDENTS.
+           DISPLAY "AVERAGE GRADE:  " AVERAGE-GRADE.
+           DISPLAY "HIGHEST GRADE:  " HIGHEST-GRADE.
+           DISPLAY "LOWEST GRADE:   " LOWEST-GRADE.
+           DISPLAY "----------------------------------------".
+
+       GENERATE-SUMMARY-REPORT.
+           OPEN INPUT STUDENT-FILE.
+           MOVE "N" TO EOF-FLAG.
+           PERFORM UNTIL EOF-FLAG = "Y"
+               READ STUDENT-FILE
+                   AT END MOVE "Y" TO EOF-FLAG
+                   NOT AT END
+                       ADD 1 TO TOTAL-STUDENTS
+                       ADD GRADE TO TOTAL-GRADE
+                       IF GRADE > HIGHEST-GRADE
+                           MOVE GRADE TO HIGHEST-GRADE
+                       END-IF
+                       IF GRADE < LOWEST-GRADE
+                           MOVE GRADE TO LOWEST-GRADE
+                       END-IF
+           END-PERFORM.
+           CLOSE STUDENT-FILE.
+
+           COMPUTE AVERAGE-GRADE = TOTAL-GRADE / TOTAL-STUDENTS.
+           DISPLAY "----------------------------------------".
+           DISPLAY "       SUMMARY STUDENT REPORT           ".
+           DISPLAY "----------------------------------------".
+           DISPLAY "TOTAL STUDENTS: " TOTAL-STUDENTS.
+           DISPLAY "AVERAGE GRADE:  " AVERAGE-GRADE.
+           DISPLAY "HIGHEST GRADE:  " HIGHEST-GRADE.
+           DISPLAY "LOWEST GRADE:   " LOWEST-GRADE.
+           DISPLAY "----------------------------------------".
