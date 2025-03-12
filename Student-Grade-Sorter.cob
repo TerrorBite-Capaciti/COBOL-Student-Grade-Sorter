@@ -71,10 +71,9 @@ IDENTIFICATION DIVISION.
        GET-SORTING-OPTION.
            DISPLAY "1. Sort by Name"
            DISPLAY "2. Sort by Grade"
-           DISPLAY "3. Sort by Course"
-           DISPLAY "4. Sort by Student Number"
+           DISPLAY "3. Sort by Student Number"
            DISPLAY "----------------------------------------"
-           DISPLAY "Enter your choice (1-4): " WITH NO ADVANCING
+           DISPLAY "Enter your choice (1-3): " WITH NO ADVANCING
            ACCEPT USER-SUB-CHOICE.
 
            PERFORM SORT-STUDENT-DATA
@@ -98,15 +97,24 @@ IDENTIFICATION DIVISION.
        SORT-STUDENT-DATA.
            EVALUATE USER-SUB-CHOICE
                WHEN 1
-                   SORT SORT-WORK-FILE
-                       ON ASCENDING KEY SORT-KEY
-                       USING STUDENT-FILE
-                       GIVING SORTED-FILE
                    MOVE FIRST-NAME OF STUDENT-RECORD TO SORT-KEY
-               WHEN 2
+                   MOVE FIRST-NAME OF STUDENT-RECORD TO STUDENT-DATA
                    SORT SORT-WORK-FILE
                        ON ASCENDING KEY SORT-KEY
                        USING STUDENT-FILE
                        GIVING SORTED-FILE
+               WHEN 2
                    MOVE GRADE OF STUDENT-RECORD TO SORT-KEY
+                   MOVE FIRST-NAME OF STUDENT-RECORD TO STUDENT-DATA
+                   SORT SORT-WORK-FILE
+                       ON ASCENDING KEY SORT-KEY
+                       USING STUDENT-FILE
+                       GIVING SORTED-FILE
+               WHEN 3
+                   MOVE GRADE OF STUDENT-RECORD TO SORT-KEY
+                   MOVE FIRST-NAME OF STUDENT-RECORD TO STUDENT-DATA
+                   SORT SORT-WORK-FILE
+                       ON ASCENDING KEY SORT-KEY
+                       USING STUDENT-FILE
+                       GIVING SORTED-FILE
            END-EVALUATE.
