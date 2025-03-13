@@ -121,7 +121,7 @@ This project highlights the efficiency of **COBOL in structured data management*
 ## 📩 Contact
 
 📧 **Email**: mailto\:terrorbite.com\
-🔗 **GitHub**: https://github.com/TerrorBite-Capacitie\
+🔗 **GitHub**: https://github.com/TerrorBite-Capacitie
 🌍 **Website**: (https://terrorbite.com
 
 ---
